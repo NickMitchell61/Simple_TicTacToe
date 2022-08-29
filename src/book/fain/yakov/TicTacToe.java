@@ -10,6 +10,10 @@ public class TicTacToe extends Applet implements ActionListener {
 	Button newGameButton;
 	Label score;
 	int emptySquaresLeft = 9;
+	int countWin = 0;
+	int countLose = 0;
+	Label youLose;
+	Label youWin;
 	
 	public void init() {
 		
@@ -23,7 +27,14 @@ public class TicTacToe extends Applet implements ActionListener {
 		newGameButton.addActionListener(this);
 		
 		Panel topPanel = new Panel();
+		
+		youLose = new Label("You lose: " + countLose);
+		topPanel.add(youLose);		
+		
 		topPanel.add(newGameButton);
+		
+		youWin = new Label("You won: " + countWin);
+		topPanel.add(youWin);
 		
 			this.add(topPanel, "North");
 			
@@ -33,6 +44,7 @@ public class TicTacToe extends Applet implements ActionListener {
 			
 			score = new Label("Your turn!");
 			this.add(score, "South");
+			
 			
 			squares = new Button[9];
 			
@@ -86,10 +98,15 @@ public class TicTacToe extends Applet implements ActionListener {
 			}
 		}
 		
+		
 		if(winner.equals("X")) {
 			score.setText("You won!");
+			countWin++;
+			youWin.setText("You won: " + String.valueOf(countWin));
 		} else if(winner.equals("O")) {
 			score.setText("You lost!");
+			countLose++;
+			youLose.setText("You lose: " + String.valueOf(countLose));
 		} else if(winner.equals("T")) {
 			score.setText("It's a tie!");
 		}
