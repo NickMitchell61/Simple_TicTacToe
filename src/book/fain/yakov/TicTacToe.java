@@ -82,6 +82,7 @@ public class TicTacToe extends Applet implements ActionListener {
 			if(theButton == squares[i]) {
 				squares[i].setLabel("X");
 				winner = lookForWinner();
+				squares[i].setEnabled(false);
 				
 				if(!"".equals(winner)) {
 					endGame();
@@ -202,6 +203,7 @@ public class TicTacToe extends Applet implements ActionListener {
 		}
 		
 		squares[selectedSquare].setLabel("O");
+		squares[selectedSquare].setEnabled(false);
 	}
 	
 	
@@ -333,7 +335,7 @@ public class TicTacToe extends Applet implements ActionListener {
 		newGameButton.setEnabled(true);
 		
 		for (int i = 0; i < squares.length; i++) {
-			squares[i].setEnabled(true);
+			squares[i].setEnabled(false);
 		}
 	}
 
